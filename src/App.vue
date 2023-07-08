@@ -1,8 +1,6 @@
 <script setup>
 </script>
 
-<template>
-  Hello World
-</template>
+<template></template>
 
 <style scoped></style>
