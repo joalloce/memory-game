@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-image: url("/images/brain.svg");
+  background-size: 150px;
+  background-color:	#0a0a0a;
+  animation: animatedBackground 30s linear infinite alternate;
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 100%;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
