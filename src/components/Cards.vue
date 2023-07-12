@@ -2,25 +2,18 @@
   <div class="cardGrid">
     <div class="cardGrid__inner">
       <div class="cardGrid__flex">
-        <Card v-for="card in cardList" :imgId="card.imgId" :isFlipped="card.isFlipped" />
+        <Card v-for="(card, position) in memory.cards" :position="position" :imgId="card.id" :isFlipped="card.isFlipped" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
-import { CARDS_LENGTH, CARDS, BACK } from "../config";
-
 import Card from "@/components/Card.vue";
+import { useMemoryStore } from "@/stores/memory"
 
-
-const cardList = CARDS.map((e, i) => {
-  return {
-    imgId: i,
-    isFlipped: false
-  }
-})
+const memory = useMemoryStore();
+console.log(memory.cards)
 
 </script>
 

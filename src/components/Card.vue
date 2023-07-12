@@ -1,6 +1,6 @@
 <template>
-  <div @click="isFlipped = !isFlipped" class="card">
-    <VueFlip v-model="isFlipped" class="card__flip" height="120px" width="120px">
+  <div @click="toggleFlip(props.position)" class="card">
+    <VueFlip v-model="memory.cards[props.position].isFlipped" class="card__flip" height="120px" width="120px">
       <template v-slot:front>
         <img :src="backSrc" alt="">
       </template>
@@ -14,12 +14,17 @@
 <script setup>
 import { computed, ref } from "vue";
 import { VueFlip } from "vue-flip";
-import { CARDS, BACK } from "../config";
+import { CARDS, BACK } from "@/config";
+import { useMemoryStore } from "@/stores/memory";
+
+const memory = useMemoryStore();
+
+const props = defineProps(["imgId", "isFlipped", "position"]);
 
 
-const props = defineProps(["imgId", "isFlipped"]);
-
-const isFlipped = ref(props.isFlipped);
+function toggleFlip(position) {
+  memory.flipCard(position);
+}
 
 function imgSrc(id) {
   return `/images/${CARDS[id]}`;
@@ -27,7 +32,6 @@ function imgSrc(id) {
 const backSrc = computed(() => {
   return `/images/${BACK}`;
 })
-
 
 </script>
 

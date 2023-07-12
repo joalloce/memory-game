@@ -1,9 +1,9 @@
 <template>
-  <div class="baseLayout">
+  <main class="baseLayout">
     <div class="baseLayout__inner">
       <slot />
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
