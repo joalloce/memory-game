@@ -2,7 +2,8 @@
   <div class="cardGrid">
     <div class="cardGrid__inner">
       <div class="cardGrid__flex">
-        <Card v-for="(card, position) in memory.cards" :position="position" :imgId="card.id" :isFlipped="card.isFlipped" />
+        <Card v-for="(card, position) in memory.cards" :position="position" :imgId="card.id"
+          :isFlipped="card.isFlipped" />
       </div>
     </div>
   </div>
@@ -13,7 +14,6 @@ import Card from "@/components/Card.vue";
 import { useMemoryStore } from "@/stores/memory"
 
 const memory = useMemoryStore();
-console.log(memory.cards)
 
 </script>
 

@@ -50,15 +50,15 @@ const backSrc = computed(() => {
 
 @media only screen and (max-width: 768px) {
   .card__flip {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 90px;
+    max-height: 90px;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .card__flip {
-    max-width: 75px;
-    max-height: 75px;
+    max-width: 70px;
+    max-height: 70px;
   }
 }
 </style>
