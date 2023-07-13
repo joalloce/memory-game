@@ -27,10 +27,10 @@ function toggleFlip(position) {
 }
 
 function imgSrc(id) {
-  return `/images/${CARDS[id]}`;
+  return `/memory-game/images/${CARDS[id]}`;
 }
 const backSrc = computed(() => {
-  return `/images/${BACK}`;
+  return `/memory-game/images/${BACK}`;
 })
 
 </script>
