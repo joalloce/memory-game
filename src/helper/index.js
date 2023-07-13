@@ -19,6 +19,10 @@ export const getNumberBasedOnDifficulty = (difficulty) => {
   }
 };
 
+export function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const mapToState = (array) => {
   return array.map((e) => {
     return {

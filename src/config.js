@@ -13,3 +13,4 @@ export const CARDS = [
 export const CARDS_LENGTH = CARDS.length;
 export const HOME = "home";
 export const GAME = "game";
+export const WAIT = 1000;

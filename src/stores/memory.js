@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { GAME, HOME } from "@/config";
-import { initialCardsState, getNumberBasedOnDifficulty } from "@/helper";
+import { GAME, HOME, WAIT } from "@/config";
+import { initialCardsState, getNumberBasedOnDifficulty, sleep } from "@/helper";
 
 export const useMemoryStore = defineStore("memory", {
   state: () => ({
@@ -10,8 +10,11 @@ export const useMemoryStore = defineStore("memory", {
     personalBest: 100,
     moveCount: 0,
     pairsFound: [],
+    cardClicked: [],
   }),
-  getters: {},
+  getters: {
+    pairs: (state) => state.pairsFound.length,
+  },
   actions: {
     start() {
       this.view = GAME;
@@ -22,14 +25,41 @@ export const useMemoryStore = defineStore("memory", {
     goHome() {
       this.view = HOME;
     },
-    flipCard(position) {
-      this.cards[position].isFlipped = !this.cards[position].isFlipped;
-    },
-    resetCards() {
-      this.cards = initialCardsState(6);
-    },
-    resetPB() {
-      this.personalBest = 100;
+    async flipCard(position) {
+      if (this.cardClicked.length <= 1) {
+        if (!this.cards[position].isFlipped) {
+          // flip once
+          this.cardClicked.push(position);
+          this.cards[position].isFlipped = true;
+        }
+
+        if (this.cardClicked.length === 2) {
+          // when 2 cards are flipped
+          if (
+            this.cards[this.cardClicked[0]].id ===
+            this.cards[this.cardClicked[1]].id
+          ) {
+            this.pairsFound.push(this.cards[this.cardClicked[0]].id);
+          } else {
+            await sleep(WAIT); // sleep
+            // unflip the cards
+            this.cards[this.cardClicked[0]].isFlipped = false;
+            this.cards[this.cardClicked[1]].isFlipped = false;
+          }
+          this.cardClicked = []; // reset the card clicked
+          this.moveCount++; // add move count
+          if (
+            this.pairsFound.length ===
+            getNumberBasedOnDifficulty(this.difficulty)
+          ) {
+            // check if game is finished
+            this.personalBest =
+              this.moveCount < this.personalBest
+                ? this.moveCount
+                : this.personalBest;
+          }
+        }
+      }
     },
   },
 });
