@@ -42,6 +42,10 @@ const backSrc = computed(() => {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
 .card__flip {
 
   height: 120px;

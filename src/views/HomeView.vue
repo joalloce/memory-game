@@ -18,23 +18,24 @@
           <h2 class="home__difficultyTitle">Select Difficulty:</h2>
           <div class="home__difficultyRatios">
             <div>
-              <input type="radio" id="easy" value="Easy" v-model="memory.difficulty" />
-              <label for="easy">Easy</label>
+              <input type="radio" id="easy" value="Easy" v-model="memory.difficulty" class="home__difficultyRatio" />
+              <label for="easy" class="home__difficultyRatio">Easy</label>
             </div>
             <div>
 
-              <input type="radio" id="default" value="Default" v-model="memory.difficulty" />
-              <label for="default">Default</label>
+              <input type="radio" id="default" value="Default" v-model="memory.difficulty"
+                class="home__difficultyRatio" />
+              <label for="default" class="home__difficultyRatio">Default</label>
             </div>
             <div>
 
-              <input type="radio" id="normal" value="Normal" v-model="memory.difficulty" />
-              <label for="normal">Normal</label>
+              <input type="radio" id="normal" value="Normal" v-model="memory.difficulty" class="home__difficultyRatio" />
+              <label for="normal" class="home__difficultyRatio">Normal</label>
             </div>
             <div>
 
-              <input type="radio" id="hard" value="Hard" v-model="memory.difficulty" />
-              <label for="hard">Hard</label>
+              <input type="radio" id="hard" value="Hard" v-model="memory.difficulty" class="home__difficultyRatio" />
+              <label for="hard" class="home__difficultyRatio">Hard</label>
             </div>
           </div>
         </div>
@@ -132,6 +133,10 @@ const memory = useMemoryStore();
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.home__difficultyRatio:hover {
+  cursor: pointer
 }
 
 .home__play {
